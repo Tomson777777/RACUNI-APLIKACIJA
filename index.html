@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Računi — vođenje izlaznih računa</title>
+<link rel="manifest" href="data:application/manifest+json;base64,ewogICJuYW1lIjogIlJhY3VuaSAtIG9icnQiLAogICJzaG9ydF9uYW1lIjogIlJhY3VuaSIsCiAgInN0YXJ0X3VybCI6ICIuLyIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiI0VFRjBFQiIsCiAgInRoZW1lX2NvbG9yIjogIiMxQzJCMzkiLAogICJpY29ucyI6IFsKICAgIHsic3JjIjogImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBTUFBQUFEQUNBWUFBQUJTM0d3SEFBQUY1RWxFUVZSNG5PM2RUMjdjUmhERjRSNDV4L0RlZ1kwc3ZmQUZmQVZmd1VmeUZYSUZYMENMTEFNRjhWN1hNT3lGUUlHaWhodzJXZDFkVmUvMzdRTFlJMXA1cjZ2NVoyWXV4Wm0zSHo3OUduME1hT2Z4NGY0eStoam1oaDRNWVVjcFkwdlIvUWNUZW16cFhZWnVQNHpnbzBhdklqVC9JUVFmWjdRdVFyTVhKL2l3MUtvSTVpOUs4TkdTZFJIdUxGK004S00xNjR5WnRJbmdZd1NMYVhCNkFoQitqR0tSdlZNRklQd1k3V3dHRHhlQThNT0xNMWs4VkFEQ0QyK09acks2QUlRZlhoM0pabFVCQ0QrOHE4M283Z0lRZmtSUms5VmRCU0Q4aUdadlptOFdnUEFqcWozWk5YMFVBb2htc3dDcy9vanVWb1pYQzBENGtjVldsdGtDUWRyVkFyRDZJNXUxVERNQklPMVZBVmo5a2RXMWJETUJJTzFGQVZqOWtkMHk0MHdBU0hzdUFLcy9WTXl6emdTQU5Bb0FhWmRTOG0xL2Z2enpmZlFocFBYdTQrZlJoMkRtOGVIKzhzZm9nN0JFOE51YmZzZFppcEJtQzBUNCs4cnkrMDVSZ0N6L002TEo4SHRQVVFEZ3FFdjBFK0FNcTFCMGtjOEhtQUNRUmdFZ2pRSkFHZ1dBTkFvQWFSUUEwaWdBcEZFQVNLTUFrRVlCSUkwQ1FCb0ZnRFFLQUdrVUFOSW9BS1JSQUVpakFKQkdBU0NOQWtCYXFzOEZxaFg1dmF5V2xOOVh6UVNBTk9rSm9Menk0UWtUQU5Jb0FLUlJBRWlqQUpCR0FTQ05Ba0FhQllBMENnQnBGQURTS0FDa1VRQklvd0NRSnYwd1hKYkhvWG1vN3pnbUFLUkpUd0JXVGpBQklJMENRQm9GZ0RRS0FHa1VBTklvQUtSUkFFaWpBSkJHQVNDTkFrQWFCWUEwNldlQnNqd051aGZQUHIzR0JJQTA2UW5BaWdnbUFLUlJBRWlqQUpCR0FTQ05Ba0FhQllBMENnQnBGQURTS0FDa1VRQklvd0NRUmdFZ2pRSkFHZ1dBTkFvQWFSUUEwaWdBcEZFQVNLTUFrRVlCSUkwQ1FKcjBwMEw4Ky85L293L0JoYi8rZkQvNkVJWmhBa0NhOUFSUVh2bndoQWtBYWRJVEFPdFVQamVWQXFDVW9oUDRKUW9nYmkzNDM3NjhxWHFkcjMvL3REaWM3aWlBb0d1aHJ3MzhyYjhmcFJBVVFNd3kvR2VEdjJaNlhlOUZvQUFpZWdWL3lYc1JLSUNBZWZoN0JYL0pheEVvUUdJZWdyL2tyUWpjQ0V2S1kvam52QndUQlVqSWUvZ25IbzZOTFZBeVUvZzloR3VQMFZzaUprQWkwY0kvTitxWW1RQkp0SDZVNGRZS0hiRjBwVkNBZEN5RFdMTXRtZi9abzhmdzdjdWI3bHVoeTlzUG4zNTEvWW5HK0s1Zis2MlBWUWlQSGsvUEVqQUJndXNWL2x1dmJ4bmFucE9BQXFDVWNqejR5ei9uNVFiWFhteUJBck5hL2ErRjFzTkpiWTh5TVFHQ3NycnFzd3laaCtEM3hIMkE0Q3dENnkzOFBZNkhBZ2l6dUhRWkhRVUl5R0x2SCtWa3RYVXhLUUJrVi85U0tFQTQxcXQvaFBDM1BFWUtBR2tVUUV5MDFiODE3Z01rZHV0RTEvcnhoWWlZQUlGRWZ0Ny9yRmIvWmdvQWFXeUJFdHY2dERiRktYSU5Fd0RTS0FDa1VRQklDMThBMWMrMWg0M3dCUURPU0ZFQXBnQ09TbEdBVWlnQmprbDFIMkFxZ2ZMN2hPZTJIbld3Zmo5QTFQc0txUW93WVJwZ3J6UmJJQ1ZSM3MxbHFkVy9PZVVFd0pOcjJ4SWVoM2lKQ1NCbUhuckZTYkpFQVNEdDd2SGgvakw2SUZEdnpPb2RiUXEwT3NiSGgvc0xFd0FoU3RBS0JRak1hZ3A0MXJxY0ZFQll0SzFRQ3hRZ09NdmdlaXRCaitPNUsrWHBaS0Q1VDRKTDE5NDI2YTBJTFV5WmZ3NSs5TzhKVU5maU93S092SzdWamJiV0pad0t3SjFnbEZMV3YrRmwrdStlWDVIVTA0dXREMU1nTnI0a2I1LzVscDhDSkRQcWExS3RqcUhISkZrdFFDbVVJSU1XMS9oN2ZGRjI3L0NYd2prQWRvcHk0NnpXcS9zQVhCS05MK0lKNllqVnZ4UW1RRnA3cjk2TU5ycXNWKzhFTXdYeUdCMndMVDJQYlMzVFBBb2h3R01KdkJ6VDVrclBGYUY4Um0rSlJnUi9hMGR6YzZ0RENYTHFYWVJSSy82dDdUd253YUo2blNSNzJlcXMyWFd5eXhUSXo3b0lIb0svNTJMTzdxczlsRURMbWFkQVBkaDdKYlBxY2ljbFFBUTFsL0dyTG9OeWZ3RGUxV2EwK2o0QUpZQlhSN0o1NkVZWUpZQTNSek41K0U0d0pZQVhaN0o0NmxFSVNvRFJ6bWJ3OUxOQWxBQ2pXR1RQTkx4Y0prVVBsb3V1NmRPZ1RBTzBacDJ4Wm9GbEdzQlNxOFcxK1lwTkVYQkc2MTFGdHkwTFJVQ05YdHZwN250MmlvQXR2YzhqaDU2MFVnYVVNdmJpaWJ1ck5wUWlOMjlYQ244RGFFYnJXRU56VHBjQUFBQUFTVVZPUks1Q1lJST0iLCAic2l6ZXMiOiAiMTkyeDE5MiIsICJ0eXBlIjogImltYWdlL3BuZyJ9LAogICAgeyJzcmMiOiAiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFnQUFBQUlBQ0FZQUFBRDBlTlQ2QUFBU0pVbEVRVlI0bk8zZHpYSGN5SllGWUVndE03VFh4Q2htcVlVY2tBdnRRcHZVTHJRTGNxQVhXazcweEdqZmJyelFMRFRzVnhKWlA2Z0NrUGZtK1Q0RHlFU0M1RG00UUlHdkZrcDYrLzdqdDlGckFOakMzMy85K1dyMEduak9TUmxFd0FOOHB5Q01ZZE1QSU93QjFsRUs5bWVEZHlEd0FiYWxFR3pQaG01QTRBTWNTeUY0bkEyOGs5QUhxRUVadUk5TlcwSG9BOVNtRE56T1JsMGg5QUY2VWdZdXN6bG5DSDZBT1NnQ0w3TXBKNFErd055VWdYK3pFWXZnQjBpakNJUVhBTUVQa0MyNUNFUWV1T0FINEZSaUVZZzZZTUVQd0NWSlJTRGlRQVUvQUdza0ZJSFhveGV3TitFUHdGb0oyVEZ0dzBrNGVRRHNiOVpwd0hRSEpmZ0IyTU5zUldDcVd3RENINEM5ekpZeFU3U1oyVTRLQUxYTk1BMW9Qd0VRL2dBY2JZYnNhVjBBWmpnQkFQVFVQWU5hampDNmJ6b0FjK2w0UzZEZEJFRDRBMUJOeDJ4cVZRQTZiakFBR2JwbFZJdVJSYmROQlNCYmgxc0M1U2NBd2grQWJqcGtWK2tDMEdFREFlQWwxVE9zYkFHb3ZuRUFjRTNsTEN0WkFDcHZHQUNzVVRYVHloV0FxaHNGQVBlcW1HMmxDa0RGRFFLQUxWVEx1RElGb05yR0FNRFdLbVZkaVFKUWFVTUFZRTlWTW05NEFhaXlFUUJ3bEFyWk43UUFWTmdBQUJoaGRBWU9Ld0NqRHh3QVJodVpoVU1LZ1BBSGdPOUdaZUxoQlVENEE4Q1BSbVRqb1FWQStBUEF5NDdPeU1NS2dQQUhnTXVPek1wRENvRHdCNERiSEpXWnc5OERBQUFjYi9jQzRPb2ZBTlk1SWp0M0xRRENId0R1czNlRzdsWUFoRDhBUEdiUExQVU1BQUFFMnFVQXVQb0hnRzNzbGFtYkZ3RGhEd0RiMmlOYk55MEF3aDhBOXJGMXhub0dBQUFDYlZZQVhQMER3TDYyek5wTkNvRHdCNEJqYkpXNWJnRUFRS0NIQzRDcmZ3QTQxaGJaYXdJQUFJRWVLZ0N1L2dGZ2pFY3orTzRDSVB3QllLeEhzdGd0QUFBSWRGY0JjUFVQQURYY204a21BQUFRYUhVQmNQVVBBTFhjazgwbUFBQVFhRlVCY1BVUEFEV3R6V2dUQUFBSWRITUJjUFVQQUxXdHlXb1RBQUFJZEZNQmNQVVBBRDNjbXRrbUFBQVFTQUVBZ0VCWEM0RHhQd0QwY2t0Mm13QUFRS0NMQmNEVlB3RDBkQzNEVFFBQUlKQUNBQUNCemhZQTQzOEE2TzFTbHBzQUFFQWdCUUFBQXIxWUFJei9BV0FPNXpMZEJBQUFBaWtBQUJEb1dRRXcvZ2VBdWJ5VTdXOUdMSVQrdm43NVBIb0p3SWwzSHo2TlhnTE5LQURjVE9oRFhhZS9uOG9BdDFBQXVFcndReTlQdjdPS0FKZjg4QXlBKy8vOFRQaERYMzUvT2ZWenhwc0E4Q0ovT0dBT3BnR2M0Mk9BUENQOFlUNStyL21aQXNBUC9KR0FlZm45NXRRL0JjRDlmd0NZMjJuV213RHdEMWNITUQrLzV6eFJBRmlXeFI4RlNPTDNuV1ZSQUFBZ2tnS0Fxd0VJNVBlZTE4dmlBVUFBU1BHVStTWUFBQkJJQVFobkRBaTUvUDVuVXdBQUlKQUNBQUNCRkFBQUNLUUFBRUFnQlFBQUFyMzJEZ0FBeVBMMi9jZHZKZ0FBRUVnQkFJQkFDZ0FBQkZJQUFDQ1FBZ0FBZ1JRQUFBaWtBQUJBSUFVQUFBSXBBQUFRU0FFQWdFQUtBQUFFVWdBQUlKQUNBQUNCRkFBQUNLUUFBRUFnQlFBQUFpa0FBQkJJQVFDQVFBb0FBQVJTQUFBZ2tBSUFBSUVVQUFBSXBBQUFRQ0FGQUFBQ0tRQUFFRWdCQUlCQUNnQUFCRklBQUNDUUFnQUFnUlFBQUFpa0FBQkFJQVVBQUFJcEFBQVFTQUVBZ0VBS0FBQUVVZ0FBSUpBQ0FBQ0JGQUFBQ0tRQUFFQWdCUUFBQWlrQUFCQklBUUNBUUFvQUFBUlNBQUFna0FJQUFJSGVqRjRBWFBMdXc2ZlJTNEM3ZmYzeWVmUVM0Q3dUQUFBSXBBQUFRQ0FGQUFBQ0tRQUFFRWdCQUlCQUNnQUFCUEl4UUVyek1TcUFmWmdBQUVBZ0JRQUFBaWtBQUJCSUFRQ0FRQW9BQUFSU0FBQWdrQUlBQUlFVUFBQUlwQUFBUUNBRkFBQUNLUUFBRUVnQkFJQkFDZ0FBQkZJQUFDQ1FBZ0FBZ1JRQUFBaWtBQUJBSUFVQUFBSXBBQUFRU0FFQWdFQUtBQUFFVWdBQUlKQUNBQUNCRkFBQUNLUUFBRUFnQlFBQUFpa0FBQkJJQVFDQVFBb0FBQVJTQUFBZzBKdlJDNEJMM24zNE5Ib0pGUEwxeStmUlM0QnBtQUFBUUNBRkFBQUNLUUFBRUVnQkFJQkFDZ0FBQkZJQUFDQ1Fqd0ZTbW85OUFlekRCQUFBQWlrQUFCQklBUUNBUUFvQUFBUlNBQUFna0FJQUFJRVVBQUFJcEFBQVFDQUZBQUFDS1FBQUVFZ0JBSUJBQ2dBQUJGSUFBQ0NRQWdBQWdSUUFBQWlrQUFCQUlBVUFBQUlwQUFBUVNBRUFnRUFLQUFBRVVnQUFJSkFDQUFDQkZBQUFDS1FBQUVBZ0JRQUFBaWtBQUJCSUFRQ0FRQW9BQUFSU0FBQWdrQUlBQUlIZWpGNEFYUEx1dzZmUlN5RFExeStmUnk4QmRtY0NBQUNCRkFBQUNLUUFBRUFnQlFBQUFpa0FBQkJJQVFDQVFENEdTR2sramdXd0R4TUFBQWlrQUFCQUlBVUFBQUlwQUFBUVNBRUFnRUFLQUFBRVVnQUFJSkFDQUFDQkZBQUFDS1FBQUVBZ0JRQUFBaWtBQUJCSUFRQ0FRQW9BQUFSU0FBQWdrQUlBQUlFVUFBQUlwQUFBUUNBRkFBQUNLUUFBRUVnQkFJQkFDZ0FBQkZJQUFDQ1FBZ0FBZ1JRQUFBaWtBQUJBSUFVQUFBSXBBQUFRU0FFQWdFQUtBQUFFVWdBQUlKQUNBQUNCRkFBQUNLUUFBRUFnQlFBQUFpa0FBQkJJQVFDQVFBb0FBQVJTQUFBZ2tBSUFBSUVVQUFBSXBBQUFRQ0FGQUFBQ0tRQUFFRWdCQUlCQUNnQUFCRklBQUNDUUFnQUFnUlFBQUFpa0FBQkFJQVVBQUFJcEFBQVFTQUVBZ0VBS0FBQUVVZ0FBSUpBQ0FBQ0JGQUFBQ1BSbTlBTGdrdi8rMy84WnZRUzQyMy85eDMrT1hnS2NaUUlBQUlFVUFBQUlwQUFBUUNBRkFBQUNlUWlRMGp4RUJiQVBFd0FBQ0tRQUFFQWdCUUFBQWlrQUFCQklBUUNBUUFvQUFBUlNBQUFna1BjQUFEVHg3c09uemI3VzF5K2ZOL3RhOUtRQUFCU3laY2hYK0Q3VXBRQUFEQ1NJR1VVQkFEaVF3S2NLQlFCZ1owS2ZpaFFBZ0IwSWZhcFRBQUEydEdmdy8vN3JMNXQ5cmQvKytOZG1YNHVlRkFDQUIyMGQrbHNHL2Rydm9SamtVQUFBN3JSRjhCOFI5bXU4dEI2bFlFNEtBTUJLandaL3RkQy81blM5eXNBOEZBQ0FHejBTL04xQy94eGxZQjRLQU1BVjl3Yi9MS0YvampMUW13SUFjTUU5NFQ5NzhML2s2WmdWZ1Q0VUFJQVhyQTMreE5CL2lhbEFId29Bd0FuQnZ4MVRnZG9VQUlEL3R5YjhCZi90RklHYUZBQ0E1ZmJ3Ri96M1V3UnFlVDE2QVFBanZmdndTZmdmekQ3V1lBSUF4Qkw4NDVnR2pLY0FBSkZ1Q1gvQnZ6OUZZQnkzQUlBb3Q0NzhoZit4N1BmeEZBQWdocEYvYmZiOVdHNEJBQkZjOWZmZ2xzQnhUQUNBNlFuL2ZweVAvU2tBd05TRWYxL095NzdjQWdDbWRTMzhCVXg5Ymduc3h3UUFtSkx3bjR2enRUMEZBSmlPOEorVDg3WXRCUUNZaXZDZm0vTzNIUVVBbUlid3orQThia01CQUtZZy9MTTRuNDlUQUlEMmhIOG01L1V4Q2dBd05TRXhOK2YzZnQ0REFMUjI2ZW8vTFJ6dS9heDg5MzM2L2RkZnZDZmdEcS9ldnYvNGJmUWlHT2ZybDgramx3QjNTdy8vdlVLdjY5NHBBZXVZQUFBdDNmcWYvV1p5Vk1EOS9IMjZGZ0l1OHd3QU1KM1pBdXUzUC80MTlPcDI5UGUvMVd6bmZXOXVBWVJ6QzRDT1VrYi9WVU8zK2g1WDNiZHFGSUJ3Q2dEZEpJUi9sd0Nydk45ZDluQWt6d0FBYmN4KzM3OWJhRDJ0dDNJUjREelBBQUJUNkJ4Q1hlNnhuMU54L1oxL0hvNmlBQUF0ekRyNnJ4YWM5NnA0RGlxdXFSSUZBR2l0OHg5NTRiKy95bXNielRNQVFIbXozZnZmTS9qWEJ0NHNKWVQxZkFvZ25FOEJVTjFzby8rdEEzZnJQVmk3dmk3blFORjV6Z1FBNENCYmhkQ2VvWHY2dGErdHQwdjQ4ekxQQUFCbHpYVDF2MFg0Ly83ckw0Y2U5OUhmYjArekhNZVdGQUNnblc1L3pCOE4vOUZCL05MMzczWU9scVhubXZma0ZnQlEwaXdQL2owUy90VUM2Mms5N3FmUHdRUUFhS1ZhS0Y0eVUvaWZxcnkyYXpxdmZXc21BRUE1TTF6OTN4ditBb3FqbUFBQWJYUUpSK0ZmbTMzK1RnRUFTcG5oNnY4ZVFvbWpLUUJBQzEwQzhwNnIveTdITmhON3JnQUFiRWI0MDRrQ0FKVFJlZnd2L09sR0FRREttekVvWnp5bWJ0TFBnUUlBbEpCMDlaOGVQTlNnQUFDbHpSYVdzeDFQZDhublF3RUFlSURYNHRLVkFnQU0xM244djBieTFTYjFLQUJBV2RVRGM4M1ZmL1ZqU1paNmJoUUFBQWlrQUFCRGRSMy91L3FuT3dVQUtFbG9jcVRFbnpjRkFHQWxWLy9NUUFFQWdFQUtBRERNdWZ2L2xhK2FYZjNQSysxOEtRQUFFT2pONkFVQWpIREVHL3c2dlNVdzdlb1hFd0FBaUtRQUFFTjAvZncvekVJQkFFb3hpbWFrcEo4L0JRQUFBaWtBQUJCSUFRQ0FRQW9BQUFSU0FBQWdrQUlBSEs3aks0REprZkp6NkUyQVFLUzFmK1J2ZmF0ZlNualFud2tBd0JYQ254a3BBQUFRU0FFQWdFQUtBQUFFVWdEQytZY3NBSmtVQUFBSXBBQUFRQ0FGQUxjQkFBSXBBQUFRU0FGZ1dSWlRBSUEwQ2dEL1VBSUFjaWdBQUJCSUFlQUhwZ0FBR1JRQW5sRUNBT2FuQVBDaWR4OCtLUUlBRTFNQXVFZ0pnTnYvemUrdC96WVlLbEFBdU1vMEFHQStyOTYrLy9odDlDTG81K3VYejZPWFFIUG5TdVd0Vjl1UGNyWCtvNlAydllPVW40MDNveGRBVHlZQ0FMMjVCUUFBZ1JRQUFBaWtBQUJBSUFVQUFBSXBBRUFwS1U5Z1UxUFN6NThDQUFDQkZBQUFDS1FBQUVBZ0x3SUNJdDM3NXJzMTk0aTlYWS9LWHYvOTE1K3ZSaThDNEZUbEI3SFdoSHJsNCtDNXBQUDE5MTkvdm5JTEFBQUNLUUFBSzVrQ01BTUZBQ2hKY0hLa3hKODNCUURnRHFZQWRLY0FBRUFnQlFBb3EvcVZzeW5BSEZMUGpRSUFjSkRVb0tHbTE4dnkvZk9Bb3hjQzBKR1gvZEROVSthYkFBQ2x6WGJWUE52eGRKZDhQaFFBZ0FldG5RSWtodzUxS0FCQWVUTUc1b3pIMUUzNk9WQUFBRFp3ejdNQTZRSEVXUDhVQUE4Q0FqeEdDYUM2MDZ3M0FRQmE2QktVU2tBUDlsd0JBQ2hCSUhFMEJRQm9vMHRJM3Z0dWdDN0gxNTE5L3U2SEF1QTVBSUJ0UEZJQ0JCUjcrRG5qVFFDQVZqcUY0eU52Q2F4OG5KWFhkazNudFc5TkFRRFkwYU1sb0ZKZ1ZWc1BqM2syOG4vNy91TzNFUXNCV0tQYk8vaTNDTTVSeDN4dTdZbm5vTE9mYndHOGVNOWZDUUE2U0EyZ280Nzcybm83N2Ivd2YvNk0zNXNSQ3dGSTlQdXZ2MndTUktkZlkrc1FYck8rMy83NFY2c1N3STlNQUlEV09nYlFubGVqSS80eFVmVnprSDcxdnl3ckpnQi8vL1huS3lVQVlCOVBnYmxITUFrN2ZuYnVJLzQrQlFDMDFqbndxbDg1MzZyeU9haTh0dEVVQUtDOXpuL2tsWUQ5VkZ4VEpSZmYvT2MyQU5CSjl6RHRHbGdWOTczclhtN3QwaHQrZlFvQW9JZzludzNZUThYZzUzWW1BTUJVWmdxbHFrV2craDVYM2JjUkxrMEFydjd6SHlVQTZLWjZRSzFWSmRBNjdHdVZ2YXJnMmovNFV3Q0FLWFVJcTdWR2hWdVh2UlQrUDdwV0FLNCtBK0NkQUFBMS9CekVld1ZlbDhEbnZHdmh2eXczVEFDV3hSUUE2Q2t0eU80dEJEUHNrNnYvSHlrQVFMd1p3bzNMaFA5enR4U0FtMTRFZE1zWEFxaElPTXpOK1gzdTFzejJKa0JnZWtKaVRzN3JZMjR1QUtZQVFHZkNZaTdPNTh2V1pMVUpBQkJEYU16QmVkekdxZ0pnQ2dCMEp6eDZjLzdPVzV2UkpnQkFIQ0hTay9PMnJkVUZ3QlFBbUlFdzZjWDV1dXllYlBiZkFJRllUNkhpWFFGMUNmNzkzSFVMd0JRQW1JbVFxY2w1dWMyOW1ld1pBSUJGMkZUamZPenZvU3Q1cndnR1p1U1d3RGlDZjUxSEp2SVBUUURjQ2dCbUpJVEdzTy9yUEpyQmJnRUF2RUFZSGN0K0gyK1RLM2kzQW9DWnVTV3dIOEYvbnkwbThENEdDSENGand0dVQvQ1B0OGt0QU04Q0FBbUUxamJzNDJPMnl0eE5nOXV0QUNDRmFjQjZndjl4VzE1d3V3VUFjQWUzQlc0bitHdmFmSFJ2Q2dBa1VnU2VFL3piMnZwMit5NzM3cFVBSUZseUdSRDYrOWpqV2J2ZEh0NVRBb0IwU1VWQThPOW5yd2Z0UFFNQXNKUFRVSnl4REFqOTNuYjkrSjRwQU1Cem5jdUEwRC9XbmgrejMvM3orMG9Bd0hrZHlvRFFIMlB2ZCt3YzhnSWZKUURnZGlOTGdiQ3Y0WWdYN0hrR0FLQ1ljeUc4WlRFUTlCejJDbDlUQUFDNDdxalg2eC8yNzREOXZ3QUF1T3pJckR5c0FDeUxFZ0FBNXh5ZGtZY1dnR1ZSQWdEZ1p5T3k4ZkFDc0N4S0FBQThHWldKUXdyQXNpZ0JBREF5QzRjVmdHVlJBZ0RJTlRvRGh4YUFaUm0vQVFCd3RBclpON3dBTEV1TmpRQ0FJMVRKdkJJRllGbnFiQWdBN0tWUzFwVXBBTXRTYTJNQVlFdlZNcTVVQVZpV2Voc0VBSStxbUczbENzQ3kxTndvQUxoSDFVd3JXUUNXcGU2R0FjQ3RLbWRaMlFLd0xMVTNEZ0F1cVo1aHBRdkFzdFRmUUFENFdZZnNLci9BVTIvZmYvdzJlZzBBY0U2SDRIOVNmZ0p3cXRQR0FwQ2xXMGExS2dETDBtK0RBWmhmeDJ4cXQrQlRiZ2tBTUZMSDRIL1NiZ0p3cXZQR0E5QmI5d3hxWFFDV3BmOEpBS0NmR2JLbi9RR2Nja3NBZ0QzTkVQeFAyazhBVHMxMFlnQ29aYmFNbWVwZ1Rwa0dBTENGMllML3laUUhkVW9SQU9BZXN3Yi9rNmx1QWJ4azloTUl3UFlTc21QNkF6eGxHZ0RBSlFuQi95VG1RRThwQWdDY1NncitKM0VIZkVvUkFNaVdHUHhQWWcvOGxDSUFrQ1U1K0ovRWI4QXBSUUJnYm9MLzMyekVHY29Bd0J5RS9zdHN5aFdLQUVCUGd2OHltN09DTWdCUW05Qy9uWTI2a3pJQVVJUFF2NDlOMjRBeUFIQXNvZjg0RzdnRGhRQmdXd0ovZXpiMEFBb0J3RG9DZjM4MmVCQ2xBT0E3WVQrR1RTOUtRUUJtSWVCcitqL0RiT1FXbzBlcjNnQUFBQUJKUlU1RXJrSmdnZz09IiwgInNpemVzIjogIjUxMng1MTIiLCAidHlwZSI6ICJpbWFnZS9wbmciLCAicHVycG9zZSI6ICJhbnkifQogIF0KfQ==">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAF5ElEQVR4nO3dT27cRhDF4R45x/DegY0svfAFfAVfwUfyFXIFX0CLLAMF8V7XMOyFQIGihhw2Wd1dVe/37QLYI1p5r6v5Z2YuxZm3Hz79Gn0MaOfx4f4y+hjmhh4MYUcpY0vR/QcTemzpXYZuP4zgo0avIjT/IQQfZ7QuQrMXJ/iw1KoI5i9K8NGSdRHuLF+M8KM164yZtIngYwSLaXB6AhB+jGKRvVMFIPwY7WwGDxeA8MOLM1k8VADCD2+OZrK6AIQfXh3JZlUBCD+8q83o7gIQfkRRk9VdBSD8iGZvZm8WgPAjqj3ZNX0UAohmswCs/ojuVoZXC0D4kcVWltkCQdrVArD6I5u1TDMBIO1VAVj9kdW1bDMBIO1FAVj9kd0y40wASHsuAKs/VMyzzgSANAoAaZdS8m1/fvzzffQhpPXu4+fRh2Dm8eH+8sfog7BE8NubfsdZipBmC0T4+8ry+05RgCz/M6LJ8HtPUQDgqEv0E+AMq1B0kc8HmACQRgEgjQJAGgWANAoAaRQA0igApFEASKMAkEYBII0CQBoFgDQKAGkUANIoAKRRAEijAJBGASCNAkBaqs8FqhX5vayWlN9XzQSANOkJoLzy4QkTANIoAKRRAEijAJBGASCNAkAaBYA0CgBpFADSKACkUQBIowCQJv0wXJbHoXmo7zgmAKRJTwBWTjABII0CQBoFgDQKAGkUANIoAKRRAEijAJBGASCNAkAaBYA06WeBsjwNuhfPPr3GBIA06QnAiggmAKRRAEijAJBGASCNAkAaBYA0CgBpFADSKACkUQBIowCQRgEgjQJAGgWANAoAaRQA0igApFEASKMAkEYBII0CQJr0p0L8+/9/ow/Bhb/+fD/6EIZhAkCa9ARQXvnwhAkAadITAOtUPjeVAqCUohP4JQogbi343768qXqdr3//tDic7iiAoGuhrw38rb8fpRAUQMwy/GeDv2Z6Xe9FoAAiegV/yXsRKICAefh7BX/JaxEoQGIegr/krQjcCEvKY/jnvBwTBUjIe/gnHo6NLVAyU/g9hGuP0VsiJkAi0cI/N+qYmQBJtH6U4dYKHbF0pVCAdCyDWLMtmf/Zo8fw7cub7luhy9sPn351/YnG+K5f+62PVQiPHk/PEjABgusV/luvbxnanpOAAqCUcjz4yz/n5QbXXmyBArNa/a+F1sNJbY8yMQGCsrrqswyZh+D3xH2A4CwD6y38PY6HAgizuHQZHQUIyGLvH+VktXUxKQBkV/9SKEA41qt/hPC3PEYKAGkUQEy01b817gMkdutE1/rxhYiYAIFEft7/rFb/ZgoAaWyBEtv6tDbFKXINEwDSKACkUQBIC18A1c+1h43wBQDOSFEApgCOSlGAUigBjkl1H2AqgfL7hOe2HnWwfj9A1PsKqQowYRpgrzRbICVR3s1lqdW/OeUEwJNr2xIeh3iJCSBmHnrFSbJEASDt7vHh/jL6IFDvzOodbQq0OsbHh/sLEwAhStAKBQjMagp41rqcFEBYtK1QCxQgOMvgeitBj+O5K+XpZKD5T4JL19426a0ILUyZfw5+9O8JUNfiOwKOvK7VjbbWJZwKwJ1glFLWv+Fl+u+eX5HU04utD1MgNr4kb5/5lp8CJDPqa1KtjqHHJFktQCmUIIMW1/h7fFF27/CXwjkAdopy46zWq/sAXBKNL+IJ6YjVvxQmQFp7r96MNrqsV+8EMwXyGB2wLT2PbS3TPAohwGMJvBzT5krPFaF8Rm+JRgR/a0dzc6tDCXLqXYRRK/6t7TwnwaJ6nSR72eqs2XWyyxTIz7oIHoK/52LO7qs9lEDLmadAPdh7JbPqciclQAQ1l/GrLoNyfwDe1Wa0+j4AJYBXR7J56EYYJYA3RzN5+E4wJYAXZ7J46lEISoDRzmbw9LNAlACjWGTPNLxcJkUPlouu6dOgTAO0Zp2xZoFlGsBSq8W1+YpNEXBG611Fty0LRUCNXtvp7nt2ioAtvc8jh560UgaUMvbiiburNpQiN29XCn8DaEbrWENzTpcAAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAFhUlEQVR4nO3dzXHcRhCG4VnKYehOl1U68qAEmIJSYEhKgSk4AR58VNFl35kGSz64VgJBLBbA9Mx0f/0+Z3EX3HrRmsUfT8WBj5++/Bi9Daj38vx0Gr0NQzaAgHMYEXi3NyTi3HrF3fRNiBhLWsbd5IUJGVu0CPvG+gWJGVu1aMVsDyFk1LCa1iYTmphRy6qhqr2CkNFCzbQ+PKGJGa3UtHUoaGJGa0cb2x00MaOXI63tCpqY0dve5jYHTcwYZU97m4ImZoy2tcGrQRMzvNjSovmpb2Ck1aCZzvDmWpMXgyZmeLXWJksOSFkMmukM7y41+i5oYkYUS62y5ICUN0EznRHNvFkmNKQQNKT8DJrlBqKatsuEhhSChpRTKfGXG//+9efoTZBxe3c/ehMOe3l+OoWf0MRsK/rnGTro6B++V5E/17BBR/7QI4j6+Z4irp+jftgRRVtTh53QwBKChhSChhSChhSChhSChhSChhSChhSChhSChhSChhSChhSChhSChhSChhSChhSChhSChhSChpTfRm9AT9Huj7OS6R5MJjSkpJrQmSZVVkxoSCFoSCFoSCFoSCFoSCFoSCFoSCFoSCFoSCFoSEl16jvyxUmctt+GCQ0pqSY0U04fExpSCBpSCBpSCBpSCBpSCBpSCBpSCBpSCBpSCBpSCBpSUl3LEflquy24VoUJDTGpJjQTTB8TGlIIGlIIGlIIGlIIGlIIGlIIGlIIGlIIGlIIGlIIGlIIGlIIGlIIGlIIGlIIGlIIGlIIGlIIGlJS3VP4/Z+/R2/CEJ9//2P0JnTDhIaUVBM606TKigkNKakmNH5RfYoUQSehGvAcQQtbi/jb1w+bX+fh8dVic7ogaEFLIe8J+NrPeg6coIXMQ66JeM30db3FTdAipjG3CnnJ+b28hM1hu+Bu7+6HxTw16n3nmNCBeQh5ysO0ZkIH5S3mqZHbQ9ABeY75bNR2seQI5hyz15CnRixBCDqQljGvRVf7ft++fugWNUEH0eLU9dbIpv/O+/8MrKGDsQjq4fH18MQ8+rO9dgQmdACWS41LMa69ttVyocfS4/Tx05cfTd+hgUx/nq1lzEde8+HxtXpbWkbNkiMJi5hrfq4XgnbMajrPv9SNjrLl+xO0uEhHKCwQtFMW09nLFXBLWu1cBJ1EhulcCkHLyrbUOCNohyJdr1Gjxe9H0IKyTudSOFMY3rUvfrVfDKPtEExoSCFoZ7Ksn8+sf0+WHMGtPTMjy04xxYSGFIKGFIKGlJBBZ3mSJvYLGXQpRI1lYYMuhajxXvjDdrd396luyZpbOxNocflotEN/4YMuhUmNX0IvOZR5vjjfkvXvKTGhM1taEmQ+W8iEFuT5CfutETSkELRjNdM1wpRusV03L89PJ/NXhTteo7b08vx0YkILy/aFsBSWHO5Z3kLlaUq32haCTmAetaewrd2U8v/aY/SG4LIWp7Brng9dq8UOdW6YEyuJzJ/PvPUEzDxAi0fqtvJzMkd8TnQ2VhGNvGip1XLnPKHfLDWI2j/Lydj7T0u0jrkUgg4p2l/Buvb6taZBs4ZGKUXnmPWbw3Yc7Ygh2mG3XtO5FCZ0WOdIPE/WETveuxMrTOlYvE7rHtu11OrimUKijsVb1KNiLoUlhwwPSxAPO9bFazmY0jGNiqrn+661eTVajk3H1WNa996Brg1alhzCWt0s62FpccmmZQVTWs+ewL0EvGUZvHmdTNQYaet3us0X+PMlEaPsaW/XHStEjd72Nrf7FiyiRi9HWjt0TyFRo7WjjR2+SZao0UpNWyZRcgQEFiyGpMljDJjWqGXVkHmITGvsYT0MzR80w7TGVi1aaRof0xpLWg69btOUuHPr9T/3kOUBcecwYvnpYr1L4Bo8fH/6D1Kl2w0seo6OAAAAAElFTkSuQmCC">
+<meta name="theme-color" content="#1C2B39">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Računi">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1C2B39;
+    --ink-soft:#3E5063;
+    --paper:#EEF0EB;
+    --paper-raised:#FFFFFF;
+    --line:#C7CFC9;
+    --line-soft:#DEE3DE;
+    --brass:#B4823C;
+    --brass-soft:#EADCC2;
+    --green:#3F7D5C;
+    --green-soft:#DEEBE3;
+    --red:#AD4A3B;
+    --red-soft:#F3E0DC;
+    --shadow: 0 1px 2px rgba(28,43,57,0.06), 0 8px 24px rgba(28,43,57,0.07);
+    --radius: 10px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  .app{
+    display:flex;
+    min-height:100vh;
+  }
+  /* ---------- SIDEBAR ---------- */
+  .sidebar{
+    width:220px;
+    flex-shrink:0;
+    background:var(--ink);
+    color:#EDEFEC;
+    padding:24px 14px;
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+  .brand{
+    font-family:'Fraunces',serif;
+    font-size:22px;
+    font-weight:600;
+    letter-spacing:0.01em;
+    padding:0 10px 22px 10px;
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+  }
+  .brand small{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    color:var(--brass);
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+  .nav-btn{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 12px;
+    border-radius:8px;
+    color:#C9D2CE;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:500;
+    border:none;
+    background:transparent;
+    text-align:left;
+    width:100%;
+    transition:background .12s ease, color .12s ease;
+  }
+  .nav-btn svg{ width:16px; height:16px; flex-shrink:0; opacity:.85;}
+  .nav-btn:hover{ background:rgba(255,255,255,0.06); color:#fff; }
+  .nav-btn.active{ background:var(--brass); color:#1C2B39; font-weight:600; }
+  .nav-btn.active svg{ opacity:1; }
+  .sidebar-foot{
+    margin-top:auto;
+    padding:10px;
+    font-size:11px;
+    color:#8FA097;
+    line-height:1.5;
+  }
+  .sidebar-foot button{
+    background:none;border:none;color:#C9D2CE;font-size:11px;text-decoration:underline;cursor:pointer;padding:0;font-family:inherit;
+  }
+
+  /* ---------- MAIN ---------- */
+  .main{
+    flex:1;
+    padding:32px 40px 60px;
+    max-width:980px;
+  }
+  .view{ display:none; }
+  .view.active{ display:block; }
+  h1.page-title{
+    font-family:'Fraunces',serif;
+    font-size:28px;
+    font-weight:600;
+    margin:0 0 4px 0;
+  }
+  .page-sub{
+    color:var(--ink-soft);
+    font-size:14px;
+    margin:0 0 28px 0;
+  }
+  .card{
+    background:var(--paper-raised);
+    border:1px solid var(--line-soft);
+    border-radius:var(--radius);
+    padding:24px;
+    box-shadow:var(--shadow);
+    margin-bottom:20px;
+  }
+  .card h3{
+    font-family:'Fraunces',serif;
+    font-size:16px;
+    font-weight:600;
+    margin:0 0 16px 0;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .grid{ display:grid; gap:14px; }
+  .grid-2{ grid-template-columns:1fr 1fr; }
+  .grid-3{ grid-template-columns:1fr 1fr 1fr; }
+  label{ font-size:12px; font-weight:600; color:var(--ink-soft); display:block; margin-bottom:5px; letter-spacing:.01em;}
+  input[type=text], input[type=number], input[type=date], input[type=email], input[type=tel], select, textarea{
+    width:100%;
+    padding:9px 11px;
+    border:1px solid var(--line);
+    border-radius:7px;
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    color:var(--ink);
+    background:#fff;
+  }
+  input:focus, select:focus, textarea:focus{ outline:2px solid var(--brass); outline-offset:0; border-color:var(--brass);}
+  textarea{ resize:vertical; min-height:60px; }
+  .field{ margin-bottom:0; }
+  .btn{
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:13px;
+    padding:10px 18px;
+    border-radius:7px;
+    border:1px solid transparent;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .btn-primary{ background:var(--ink); color:#fff; }
+  .btn-primary:hover{ background:#0F1A24; }
+  .btn-brass{ background:var(--brass); color:#1C2B39; }
+  .btn-brass:hover{ background:#9E6F31; color:#fff;}
+  .btn-ghost{ background:transparent; color:var(--ink); border-color:var(--line); }
+  .btn-ghost:hover{ background:var(--paper); }
+  .btn-danger{ background:transparent; color:var(--red); border-color:var(--red-soft); }
+  .btn-danger:hover{ background:var(--red-soft); }
+  .btn-sm{ padding:6px 10px; font-size:12px; }
+  .btn:disabled{ opacity:.5; cursor:not-allowed; }
+  .row-actions{ display:flex; gap:8px; flex-wrap:wrap; }
+
+  .banner{
+    display:flex; gap:10px; align-items:flex-start;
+    padding:12px 14px; border-radius:8px; font-size:13px; line-height:1.5; margin-bottom:20px;
+  }
+  .banner-warn{ background:var(--brass-soft); color:#5C4319; border:1px solid #DDBE84; }
+  .banner-info{ background:#E4E9F0; color:#2E3F55; border:1px solid #C3CEDD; }
+
+  /* clients & invoices tables */
+  table{ width:100%; border-collapse:collapse; font-size:13.5px; }
+  th{
+    text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.04em;
+    color:var(--ink-soft); padding:8px 10px; border-bottom:1px solid var(--line);
+  }
+  td{ padding:10px 10px; border-bottom:1px solid var(--line-soft); vertical-align:middle;}
+  tr:last-child td{ border-bottom:none; }
+  .num{ font-family:'IBM Plex Mono',monospace; }
+  .tag{
+    display:inline-block; padding:2px 8px; border-radius:20px; font-size:11px; font-weight:600;
+  }
+  .tag-paid{ background:var(--green-soft); color:var(--green); }
+  .tag-unpaid{ background:var(--red-soft); color:var(--red); }
+  .tag-b2c{ background:#E4E9F0; color:#2E3F55; }
+  .tag-b2b{ background:#EFE7DA; color:#6B4F1D; }
+  .empty{ text-align:center; padding:40px 20px; color:var(--ink-soft); font-size:14px;}
+
+  /* invoice items editor */
+  .items-table th, .items-table td{ padding:6px 6px; }
+  .items-table input{ padding:7px 8px; font-size:13px; }
+  .items-table .qty{ width:70px; }
+  .items-table .price{ width:100px; }
+  .items-table .unit{ width:70px; }
+  .items-table .line-total{ font-family:'IBM Plex Mono',monospace; text-align:right; white-space:nowrap; padding-right:10px;}
+  .items-table .rm{ width:28px; }
+  .icon-btn{ background:none; border:none; cursor:pointer; color:var(--red); padding:4px; border-radius:5px; }
+  .icon-btn:hover{ background:var(--red-soft); }
+
+  .total-row{
+    display:flex; justify-content:flex-end; align-items:baseline; gap:14px;
+    padding-top:16px; margin-top:6px; border-top:2px solid var(--ink);
+  }
+  .total-row .label{ font-size:13px; color:var(--ink-soft); font-weight:600; }
+  .total-row .amount{ font-family:'IBM Plex Mono',monospace; font-size:26px; font-weight:600; }
+
+  .invoice-number-tag{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:600;
+    border:1px solid var(--brass); color:#8A611F; background:var(--brass-soft);
+    padding:5px 10px; border-radius:6px; letter-spacing:.02em;
+  }
+
+  select#clientPicker{ max-width:340px; }
+
+  .toolbar{ display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap;}
+  .search-input{ max-width:260px; }
+
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(28,43,57,.45); display:none;
+    align-items:center; justify-content:center; z-index:50; padding:20px;
+  }
+  .modal-overlay.active{ display:flex; }
+  .modal{
+    background:#fff; border-radius:12px; padding:24px; width:100%; max-width:440px;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
+  }
+  .modal h3{ margin-top:0; }
+
+  .toast{
+    position:fixed; bottom:20px; right:20px; background:var(--ink); color:#fff;
+    padding:12px 18px; border-radius:8px; font-size:13px; box-shadow:var(--shadow);
+    opacity:0; transform:translateY(8px); transition:all .25s ease; z-index:100; pointer-events:none;
+  }
+  .toast.show{ opacity:1; transform:translateY(0); }
+
+  /* ---------- PRINT AREA ---------- */
+  #printArea{ display:none; }
+  .print-sheet{
+    background:#fff; padding:40px; max-width:760px; margin:0 auto;
+    font-family:'Inter',sans-serif; color:#1C2B39;
+  }
+  .print-head{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:30px;}
+  .print-brand{ font-family:'Fraunces',serif; font-size:20px; font-weight:600;}
+  .print-num{
+    font-family:'IBM Plex Mono',monospace; border:1.5px solid #B4823C; color:#8A611F;
+    padding:6px 12px; border-radius:6px; font-size:14px; font-weight:600; text-align:center;
+  }
+  .print-cols{ display:flex; gap:40px; margin-bottom:28px; }
+  .print-cols .col{ flex:1; }
+  .print-cols h4{ font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:#6B7B8A; margin:0 0 6px 0;}
+  .print-cols p{ margin:0; font-size:13.5px; line-height:1.6; }
+  table.print-items{ width:100%; border-collapse:collapse; margin-bottom:8px; }
+  table.print-items th{ text-align:left; font-size:11px; text-transform:uppercase; color:#6B7B8A; border-bottom:1.5px solid #1C2B39; padding:6px 8px;}
+  table.print-items td{ padding:8px; border-bottom:1px solid #DEE3DE; font-size:13.5px;}
+  table.print-items td.r, table.print-items th.r{ text-align:right; font-family:'IBM Plex Mono',monospace;}
+  .print-total{ display:flex; justify-content:flex-end; gap:16px; padding-top:14px; border-top:2px solid #1C2B39; margin-top:4px;}
+  .print-total .amount{ font-family:'IBM Plex Mono',monospace; font-size:22px; font-weight:600;}
+  .print-meta{ display:flex; gap:30px; font-size:12.5px; margin:20px 0; color:#3E5063; }
+  .print-note{ font-size:11.5px; color:#6B7B8A; margin-top:26px; line-height:1.6; border-top:1px solid #DEE3DE; padding-top:14px;}
+  .print-foot{ display:flex; justify-content:space-between; font-size:11.5px; color:#6B7B8A; margin-top:40px;}
+
+  @media print{
+    body *{ visibility:hidden; }
+    #printArea, #printArea *{ visibility:visible; }
+    #printArea{ display:block; position:absolute; top:0; left:0; width:100%; }
+    .print-sheet{ box-shadow:none; }
+  }
+
+  @media (max-width: 820px){
+    .app{ flex-direction:column; }
+    .sidebar{ width:100%; flex-direction:row; align-items:center; padding:14px; overflow-x:auto; }
+    .brand{ padding:0 12px 0 0; }
+    .sidebar-foot{ display:none; }
+    .nav-btn{ width:auto; white-space:nowrap; }
+    .main{ padding:20px; }
+    .grid-2, .grid-3{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <div class="sidebar">
+    <div class="brand">Računi <small>obrt</small></div>
+    <button class="nav-btn active" data-view="novi">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      Novi račun
+    </button>
+    <button class="nav-btn" data-view="racuni">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+      Računi
+    </button>
+    <button class="nav-btn" data-view="kupci">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="18" cy="9" r="2.3"/><path d="M15.5 14c2.8.3 5 2 5 6"/></svg>
+      Kupci
+    </button>
+    <button class="nav-btn" data-view="postavke">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.55V21a2 2 0 11-4 0v-.09A1.7 1.7 0 009 19.36a1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.7 1.7 0 004.64 15a1.7 1.7 0 00-1.55-1H3a2 2 0 110-4h.09A1.7 1.7 0 004.64 9a1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06A1.7 1.7 0 009 4.64a1.7 1.7 0 001-1.55V3a2 2 0 114 0v.09a1.7 1.7 0 001 1.55 1.7 1.7 0 001.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06A1.7 1.7 0 0019.36 9c.14.36.5 1 1.55 1H21a2 2 0 110 4h-.09a1.7 1.7 0 00-1.55 1z"/></svg>
+      Postavke
+    </button>
+    <div class="sidebar-foot" id="storageNote">
+      Podaci se čuvaju automatski.
+      <br><button id="exportBtn">Preuzmi sigurnosnu kopiju</button>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <!-- NOVI RAČUN -->
+    <div class="view active" id="view-novi">
+      <h1 class="page-title">Novi račun</h1>
+      <p class="page-sub">Popuni podatke i spremi ili odmah ispiši / spremi kao PDF.</p>
+
+      <div id="b2cWarning" class="banner banner-warn" style="display:none;">
+        <span>⚠️</span>
+        <div>
+          <strong>Račun privatnoj osobi (B2C).</strong> Od 1.1.2026. paušalni obrti moraju fiskalizirati sve račune izdane građanima, neovisno o načinu plaćanja — ova aplikacija to ne radi. Za takve račune trebaš certificiranu aplikaciju za fiskalizaciju (npr. FISCO, Minimax, Parra i sl.). Ovaj alat je siguran za B2B račune (firme, obrti) koji do 1.1.2027. i dalje mogu biti obični računi. Nisam knjigovođa/porezni savjetnik — provjeri sa svojim knjigovođom.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Kupac</h3>
+        <div class="grid grid-2">
+          <div class="field">
+            <label>Odaberi postojećeg kupca</label>
+            <select id="clientPicker"></select>
+          </div>
+          <div class="field" style="align-self:end;">
+            <button class="btn btn-ghost btn-sm" id="newClientQuick" type="button">+ Novi kupac</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Podaci o računu</h3>
+        <div class="grid grid-3">
+          <div class="field">
+            <label>Broj računa</label>
+            <div id="invoiceNumberTag" class="invoice-number-tag">—</div>
+          </div>
+          <div class="field">
+            <label>Datum izdavanja</label>
+            <input type="date" id="issueDate">
+          </div>
+          <div class="field">
+            <label>Datum dospijeća</label>
+            <input type="date" id="dueDate">
+          </div>
+          <div class="field">
+            <label>Datum isporuke usluge/robe</label>
+            <input type="date" id="serviceDate">
+          </div>
+          <div class="field">
+            <label>Način plaćanja</label>
+            <select id="paymentMethod">
+              <option>Transakcijski račun</option>
+              <option>Gotovina</option>
+              <option>Kartica</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Mjesto izdavanja</label>
+            <input type="text" id="issuePlace" placeholder="npr. Rijeka">
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Stavke</h3>
+        <table class="items-table">
+          <thead>
+            <tr>
+              <th>Naziv usluge / proizvoda</th>
+              <th class="qty">Kol.</th>
+              <th class="unit">J.mj.</th>
+              <th class="price">Cijena (€)</th>
+              <th>Ukupno</th>
+              <th class="rm"></th>
+            </tr>
+          </thead>
+          <tbody id="itemsBody"></tbody>
+        </table>
+        <button class="btn btn-ghost btn-sm" id="addItemBtn" type="button" style="margin-top:8px;">+ Dodaj stavku</button>
+        <div class="total-row">
+          <span class="label">Ukupno za platiti</span>
+          <span class="amount" id="invoiceTotal">0,00 €</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Napomena</h3>
+        <textarea id="invoiceNote" placeholder="Dodatna napomena na računu (opcionalno)"></textarea>
+      </div>
+
+      <div class="row-actions">
+        <button class="btn btn-ghost" id="previewBtn" type="button">👁 Pregled</button>
+        <button class="btn btn-primary" id="saveInvoiceBtn">Spremi račun</button>
+        <button class="btn btn-brass" id="saveAndPrintBtn">Spremi i ispiši / PDF</button>
+        <button class="btn btn-ghost" id="resetFormBtn" type="button">Očisti obrazac</button>
+      </div>
+    </div>
+
+    <!-- RAČUNI -->
+    <div class="view" id="view-racuni">
+      <h1 class="page-title">Računi</h1>
+      <p class="page-sub">Pregled svih izdanih računa.</p>
+      <div class="toolbar">
+        <input type="text" class="search-input" id="invoiceSearch" placeholder="Pretraži po kupcu ili broju…">
+        <div id="invoiceStats" style="font-size:13px;color:var(--ink-soft);"></div>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table id="invoicesTable">
+          <thead>
+            <tr><th>Broj</th><th>Kupac</th><th>Datum</th><th>Tip</th><th>Iznos</th><th>Status</th><th></th></tr>
+          </thead>
+          <tbody id="invoicesBody"></tbody>
+        </table>
+        <div class="empty" id="invoicesEmpty" style="display:none;">Još nema spremljenih računa.</div>
+      </div>
+    </div>
+
+    <!-- KUPCI -->
+    <div class="view" id="view-kupci">
+      <h1 class="page-title">Kupci</h1>
+      <p class="page-sub">Spremljeni kupci za brže izdavanje računa.</p>
+      <div class="row-actions" style="margin-bottom:20px;">
+        <button class="btn btn-primary" id="addClientBtn">+ Novi kupac</button>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table id="clientsTable">
+          <thead><tr><th>Naziv / ime</th><th>Tip</th><th>OIB</th><th>Adresa</th><th></th></tr></thead>
+          <tbody id="clientsBody"></tbody>
+        </table>
+        <div class="empty" id="clientsEmpty" style="display:none;">Još nema spremljenih kupaca.</div>
+      </div>
+    </div>
+
+    <!-- POSTAVKE -->
+    <div class="view" id="view-postavke">
+      <h1 class="page-title">Postavke</h1>
+      <p class="page-sub">Podaci o obrtu koji se ispisuju na svakom računu.</p>
+
+      <div class="banner banner-info">
+        <span>ℹ️</span>
+        <div>Ova aplikacija generira obične PDF/papirnate račune — pogodno za B2B (firme, obrti) do 1.1.2027. Za račune građanima (B2C) od 1.1.2026. zakonski je potrebna fiskalizacija u stvarnom vremenu preko certificiranog softvera, što ova aplikacija ne radi. Nisam knjigovođa — potvrdi detalje sa svojim.</div>
+      </div>
+
+      <div class="card">
+        <h3>Podaci o obrtu</h3>
+        <div class="grid grid-2">
+          <div class="field" style="grid-column:1/-1;">
+            <label>Logo (prikazuje se na računu)</label>
+            <div style="display:flex;align-items:center;gap:14px;">
+              <div id="logoPreviewWrap" style="width:64px;height:64px;border:1px dashed var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#fff;flex-shrink:0;">
+                <img id="logoPreview" style="max-width:100%;max-height:100%;display:none;">
+                <span id="logoPlaceholder" style="font-size:10px;color:var(--ink-soft);text-align:center;">bez loga</span>
+              </div>
+              <div class="row-actions">
+                <button class="btn btn-ghost btn-sm" id="logoUploadBtn" type="button">Učitaj logo</button>
+                <button class="btn btn-danger btn-sm" id="logoRemoveBtn" type="button" style="display:none;">Ukloni</button>
+              </div>
+              <input type="file" id="logoFile" accept="image/*" style="display:none;">
+            </div>
+          </div>
+          <div class="field"><label>Naziv obrta</label><input type="text" id="s_name" placeholder="npr. Obrt za usluge XY"></div>
+          <div class="field"><label>Vlasnik (ime i prezime)</label><input type="text" id="s_owner"></div>
+          <div class="field"><label>Adresa</label><input type="text" id="s_address" placeholder="Ulica i kućni broj"></div>
+          <div class="field"><label>Mjesto i poštanski broj</label><input type="text" id="s_city" placeholder="npr. 51000 Rijeka"></div>
+          <div class="field"><label>OIB</label><input type="text" id="s_oib"></div>
+          <div class="field"><label>MBO (matični broj obrta)</label><input type="text" id="s_mbo" placeholder="opcionalno"></div>
+          <div class="field"><label>IBAN</label><input type="text" id="s_iban"></div>
+          <div class="field"><label>Banka</label><input type="text" id="s_bank"></div>
+          <div class="field"><label>E-mail</label><input type="email" id="s_email"></div>
+          <div class="field"><label>Telefon</label><input type="tel" id="s_phone"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Numeriranje računa</h3>
+        <div class="grid grid-3">
+          <div class="field"><label>Oznaka poslovnog prostora</label><input type="text" id="s_prostor" placeholder="npr. 1"></div>
+          <div class="field"><label>Oznaka naplatnog uređaja</label><input type="text" id="s_uredjaj" placeholder="npr. 1"></div>
+          <div class="field"><label>Rok plaćanja (dana)</label><input type="number" id="s_dueDays" min="0" value="15"></div>
+        </div>
+        <p style="font-size:12px;color:var(--ink-soft);margin:10px 0 0;">Brojevi se automatski generiraju u formatu broj/poslovni-prostor/naplatni-uređaj i resetiraju svake nove godine.</p>
+      </div>
+
+      <div class="card">
+        <h3>Napomena o PDV-u (ispisuje se na računu)</h3>
+        <textarea id="s_pdvNote"></textarea>
+      </div>
+
+      <div class="row-actions">
+        <button class="btn btn-primary" id="saveSettingsBtn">Spremi postavke</button>
+      </div>
+
+      <div class="card" style="margin-top:30px;border-color:var(--red-soft);">
+        <h3 style="color:var(--red);">Sigurnosna kopija</h3>
+        <p style="font-size:13px;color:var(--ink-soft);margin-top:0;">Preuzmi sve podatke (kupci, računi, postavke) kao JSON datoteku, ili ih vrati iz ranije preuzete kopije.</p>
+        <div class="row-actions">
+          <button class="btn btn-ghost" id="exportBtn2">Preuzmi kopiju</button>
+          <button class="btn btn-ghost" id="importBtn">Uvezi kopiju</button>
+          <input type="file" id="importFile" accept="application/json" style="display:none;">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Quick add client modal -->
+<div class="modal-overlay" id="clientModal">
+  <div class="modal">
+    <h3 id="clientModalTitle">Novi kupac</h3>
+    <div class="grid" style="gap:12px;">
+      <div class="field">
+        <label>Tip kupca</label>
+        <select id="cm_type">
+          <option value="b2b">Firma / obrt (B2B)</option>
+          <option value="b2c">Privatna osoba (B2C)</option>
+        </select>
+      </div>
+      <div class="field"><label>Naziv / ime i prezime</label><input type="text" id="cm_name"></div>
+      <div class="field"><label>OIB</label><input type="text" id="cm_oib" placeholder="opcionalno za privatne osobe"></div>
+      <div class="field"><label>Adresa</label><input type="text" id="cm_address"></div>
+      <div class="field"><label>Mjesto i poštanski broj</label><input type="text" id="cm_city"></div>
+      <div class="field"><label>E-mail</label><input type="email" id="cm_email"></div>
+    </div>
+    <div class="row-actions" style="margin-top:20px;">
+      <button class="btn btn-primary" id="cm_save">Spremi kupca</button>
+      <button class="btn btn-ghost" id="cm_cancel" type="button">Odustani</button>
+    </div>
+  </div>
+</div>
+
+<!-- Invoice preview modal -->
+<div class="modal-overlay" id="previewModal">
+  <div class="modal" style="max-width:820px;padding:0;overflow:hidden;">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line-soft);">
+      <strong style="font-family:'Fraunces',serif;font-size:16px;">Pregled računa</strong>
+      <div class="row-actions">
+        <button class="btn btn-brass btn-sm" id="previewPrintBtn">Ispis / spremi kao PDF</button>
+        <button class="btn btn-ghost btn-sm" id="previewCloseBtn" type="button">Zatvori</button>
+      </div>
+    </div>
+    <div style="max-height:75vh;overflow:auto;background:var(--paper);padding:24px;">
+      <div class="print-sheet" id="previewSheet" style="box-shadow:var(--shadow);"></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- PRINT AREA -->
+<div id="printArea">
+  <div class="print-sheet" id="printSheet"></div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  const STORAGE_KEY = "obrt-app-data";
+  let data = null;
+  let currentItems = [];
+
+  const defaultData = () => ({
+    company: {
+      name:"", owner:"", address:"", city:"", oib:"", mbo:"",
+      iban:"", bank:"", email:"", phone:"", logo:"",
+      prostor:"1", uredjaj:"1", dueDays:15,
+      pdvNote:"PDV nije obračunan sukladno čl. 90. st. 2. Zakona o PDV-u (nismo u sustavu PDV-a).",
+      counters:{}
+    },
+    clients:[],
+    invoices:[]
+  });
+
+  function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
+  function eur(n){ return (Number(n)||0).toLocaleString('hr-HR',{style:'currency',currency:'EUR'}); }
+  function todayISO(){ return new Date().toISOString().slice(0,10); }
+  function addDays(iso, days){
+    const d = new Date(iso); d.setDate(d.getDate()+Number(days||0));
+    return d.toISOString().slice(0,10);
+  }
+  function fmtDate(iso){
+    if(!iso) return "—";
+    const [y,m,d] = iso.split("-");
+    return `${d}.${m}.${y}.`;
+  }
+  function toast(msg){
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'), 2200);
+  }
+
+  // ---------- STORAGE ----------
+  // Uses Claude's artifact storage when available (inside claude.ai);
+  // falls back to the browser's localStorage when opened as a standalone
+  // file / installed home-screen app, so data still persists on-device.
+  const useClaudeStorage = (typeof window.storage !== 'undefined' && window.storage && typeof window.storage.get === 'function');
+
+  async function loadData(){
+    let raw = null;
+    if(useClaudeStorage){
+      try{
+        const res = await window.storage.get(STORAGE_KEY, false);
+        raw = res && res.value ? res.value : null;
+      }catch(e){ raw = null; }
+    } else {
+      try{ raw = localStorage.getItem(STORAGE_KEY); }catch(e){ raw = null; }
+    }
+    data = raw ? JSON.parse(raw) : defaultData();
+    // merge in case of older saved shape
+    const d = defaultData();
+    data.company = Object.assign(d.company, data.company||{});
+    data.clients = data.clients || [];
+    data.invoices = data.invoices || [];
+  }
+  async function saveData(){
+    const raw = JSON.stringify(data);
+    if(useClaudeStorage){
+      try{
+        await window.storage.set(STORAGE_KEY, raw, false);
+      }catch(e){
+        toast("Greška kod spremanja podataka.");
+        console.error(e);
+      }
+    } else {
+      try{ localStorage.setItem(STORAGE_KEY, raw); }
+      catch(e){ toast("Greška kod spremanja podataka."); console.error(e); }
+    }
+  }
+
+  // ---------- NAV ----------
+  document.querySelectorAll('.nav-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>switchView(btn.dataset.view));
+  });
+  function switchView(view){
+    document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active', b.dataset.view===view));
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    document.getElementById('view-'+view).classList.add('active');
+    if(view==='racuni') renderInvoicesList();
+    if(view==='kupci') renderClientsList();
+    if(view==='novi') { renderClientPicker(); }
+  }
+
+  // ---------- SETTINGS ----------
+  function renderSettings(){
+    const c = data.company;
+    document.getElementById('s_name').value = c.name;
+    document.getElementById('s_owner').value = c.owner;
+    document.getElementById('s_address').value = c.address;
+    document.getElementById('s_city').value = c.city;
+    document.getElementById('s_oib').value = c.oib;
+    document.getElementById('s_mbo').value = c.mbo;
+    document.getElementById('s_iban').value = c.iban;
+    document.getElementById('s_bank').value = c.bank;
+    document.getElementById('s_email').value = c.email;
+    document.getElementById('s_phone').value = c.phone;
+    document.getElementById('s_prostor').value = c.prostor;
+    document.getElementById('s_uredjaj').value = c.uredjaj;
+    document.getElementById('s_dueDays').value = c.dueDays;
+    document.getElementById('s_pdvNote').value = c.pdvNote;
+    renderLogoPreview();
+  }
+  function renderLogoPreview(){
+    const img = document.getElementById('logoPreview');
+    const placeholder = document.getElementById('logoPlaceholder');
+    const removeBtn = document.getElementById('logoRemoveBtn');
+    if(data.company.logo){
+      img.src = data.company.logo;
+      img.style.display = 'block';
+      placeholder.style.display = 'none';
+      removeBtn.style.display = 'inline-flex';
+    } else {
+      img.style.display = 'none';
+      placeholder.style.display = 'block';
+      removeBtn.style.display = 'none';
+    }
+  }
+  document.getElementById('logoUploadBtn').addEventListener('click', ()=>document.getElementById('logoFile').click());
+  document.getElementById('logoFile').addEventListener('change', async (e)=>{
+    const file = e.target.files[0];
+    if(!file) return;
+    if(file.size > 1.5*1024*1024){
+      toast("Slika je prevelika (max ~1.5MB). Pokušaj manju datoteku.");
+      e.target.value = ""; return;
+    }
+    const reader = new FileReader();
+    reader.onload = async ()=>{
+      data.company.logo = reader.result;
+      await saveData();
+      renderLogoPreview();
+      toast("Logo spremljen.");
+    };
+    reader.readAsDataURL(file);
+    e.target.value = "";
+  });
+  document.getElementById('logoRemoveBtn').addEventListener('click', async ()=>{
+    data.company.logo = "";
+    await saveData();
+    renderLogoPreview();
+  });
+  document.getElementById('saveSettingsBtn').addEventListener('click', async ()=>{
+    const c = data.company;
+    c.name = document.getElementById('s_name').value.trim();
+    c.owner = document.getElementById('s_owner').value.trim();
+    c.address = document.getElementById('s_address').value.trim();
+    c.city = document.getElementById('s_city').value.trim();
+    c.oib = document.getElementById('s_oib').value.trim();
+    c.mbo = document.getElementById('s_mbo').value.trim();
+    c.iban = document.getElementById('s_iban').value.trim();
+    c.bank = document.getElementById('s_bank').value.trim();
+    c.email = document.getElementById('s_email').value.trim();
+    c.phone = document.getElementById('s_phone').value.trim();
+    c.prostor = document.getElementById('s_prostor').value.trim() || "1";
+    c.uredjaj = document.getElementById('s_uredjaj').value.trim() || "1";
+    c.dueDays = Number(document.getElementById('s_dueDays').value)||15;
+    c.pdvNote = document.getElementById('s_pdvNote').value;
+    await saveData();
+    toast("Postavke spremljene.");
+    renderInvoiceNumberPreview();
+  });
+
+  // ---------- CLIENTS ----------
+  function renderClientsList(){
+    const body = document.getElementById('clientsBody');
+    const empty = document.getElementById('clientsEmpty');
+    body.innerHTML = "";
+    if(data.clients.length===0){ empty.style.display='block'; return; }
+    empty.style.display='none';
+    data.clients.slice().reverse().forEach(cl=>{
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${escapeHtml(cl.name)}</td>
+        <td><span class="tag ${cl.type==='b2c'?'tag-b2c':'tag-b2b'}">${cl.type==='b2c'?'Privatna osoba':'Firma/obrt'}</span></td>
+        <td class="num">${escapeHtml(cl.oib||'—')}</td>
+        <td>${escapeHtml((cl.address||'')+(cl.city? ', '+cl.city:''))}</td>
+        <td class="row-actions">
+          <button class="btn btn-ghost btn-sm" data-edit="${cl.id}">Uredi</button>
+          <button class="btn btn-danger btn-sm" data-del="${cl.id}">Obriši</button>
+        </td>`;
+      body.appendChild(tr);
+    });
+    body.querySelectorAll('[data-edit]').forEach(b=>b.addEventListener('click', ()=>openClientModal(b.dataset.edit)));
+    body.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click', async ()=>{
+      if(confirm("Obrisati ovog kupca? Već spremljeni računi ostaju netaknuti.")){
+        data.clients = data.clients.filter(c=>c.id!==b.dataset.del);
+        await saveData();
+        renderClientsList();
+        renderClientPicker();
+      }
+    }));
+  }
+  function renderClientPicker(){
+    const sel = document.getElementById('clientPicker');
+    const current = sel.value;
+    sel.innerHTML = '<option value="">— jednokratni kupac (bez spremanja) —</option>' +
+      data.clients.map(c=>`<option value="${c.id}">${escapeHtml(c.name)} ${c.type==='b2c'?'(privatna osoba)':'(firma)'}</option>`).join('');
+    if(current) sel.value = current;
+    toggleB2cWarning();
+  }
+  function toggleB2cWarning(){
+    const sel = document.getElementById('clientPicker');
+    const cl = data.clients.find(c=>c.id===sel.value);
+    document.getElementById('b2cWarning').style.display = (cl && cl.type==='b2c') ? 'flex' : 'none';
+  }
+  document.getElementById('clientPicker').addEventListener('change', toggleB2cWarning);
+
+  document.getElementById('addClientBtn').addEventListener('click', ()=>openClientModal(null));
+  document.getElementById('newClientQuick').addEventListener('click', ()=>openClientModal(null));
+  document.getElementById('cm_cancel').addEventListener('click', closeClientModal);
+
+  let editingClientId = null;
+  function openClientModal(id){
+    editingClientId = id;
+    const modal = document.getElementById('clientModal');
+    if(id){
+      const cl = data.clients.find(c=>c.id===id);
+      document.getElementById('clientModalTitle').textContent = "Uredi kupca";
+      document.getElementById('cm_type').value = cl.type;
+      document.getElementById('cm_name').value = cl.name;
+      document.getElementById('cm_oib').value = cl.oib||"";
+      document.getElementById('cm_address').value = cl.address||"";
+      document.getElementById('cm_city').value = cl.city||"";
+      document.getElementById('cm_email').value = cl.email||"";
+    } else {
+      document.getElementById('clientModalTitle').textContent = "Novi kupac";
+      ['cm_name','cm_oib','cm_address','cm_city','cm_email'].forEach(id=>document.getElementById(id).value="");
+      document.getElementById('cm_type').value = "b2b";
+    }
+    modal.classList.add('active');
+  }
+  function closeClientModal(){ document.getElementById('clientModal').classList.remove('active'); }
+
+  document.getElementById('cm_save').addEventListener('click', async ()=>{
+    const name = document.getElementById('cm_name').value.trim();
+    if(!name){ toast("Unesi naziv ili ime kupca."); return; }
+    const payload = {
+      type: document.getElementById('cm_type').value,
+      name,
+      oib: document.getElementById('cm_oib').value.trim(),
+      address: document.getElementById('cm_address').value.trim(),
+      city: document.getElementById('cm_city').value.trim(),
+      email: document.getElementById('cm_email').value.trim(),
+    };
+    if(editingClientId){
+      const cl = data.clients.find(c=>c.id===editingClientId);
+      Object.assign(cl, payload);
+    } else {
+      payload.id = uid();
+      data.clients.push(payload);
+    }
+    await saveData();
+    closeClientModal();
+    renderClientsList();
+    renderClientPicker();
+    if(editingClientId===null){
+      document.getElementById('clientPicker').value = data.clients[data.clients.length-1].id;
+      toggleB2cWarning();
+    }
+    toast("Kupac spremljen.");
+  });
+
+  // ---------- INVOICE FORM ----------
+  function newItemRow(item){
+    item = item || {name:"", qty:1, unit:"kom", price:0};
+    const id = uid();
+    currentItems.push(Object.assign({id}, item));
+    renderItems();
+  }
+  function renderItems(){
+    const body = document.getElementById('itemsBody');
+    body.innerHTML = "";
+    currentItems.forEach(it=>{
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><input type="text" data-f="name" value="${escapeAttr(it.name)}" placeholder="npr. Usluga održavanja"></td>
+        <td class="qty"><input type="number" data-f="qty" min="0" step="0.01" value="${it.qty}"></td>
+        <td class="unit"><input type="text" data-f="unit" value="${escapeAttr(it.unit)}"></td>
+        <td class="price"><input type="number" data-f="price" min="0" step="0.01" value="${it.price}"></td>
+        <td class="line-total">${eur(it.qty*it.price)}</td>
+        <td class="rm"><button class="icon-btn" title="Ukloni stavku">✕</button></td>`;
+      tr.querySelectorAll('input').forEach(inp=>{
+        inp.addEventListener('input', ()=>{
+          const field = inp.dataset.f;
+          it[field] = (field==='qty'||field==='price') ? Number(inp.value)||0 : inp.value;
+          tr.querySelector('.line-total').textContent = eur(it.qty*it.price);
+          updateInvoiceTotal();
+        });
+      });
+      tr.querySelector('.icon-btn').addEventListener('click', ()=>{
+        currentItems = currentItems.filter(x=>x.id!==it.id);
+        renderItems();
+        updateInvoiceTotal();
+      });
+      body.appendChild(tr);
+    });
+  }
+  function updateInvoiceTotal(){
+    const total = currentItems.reduce((s,it)=>s+(Number(it.qty)||0)*(Number(it.price)||0), 0);
+    document.getElementById('invoiceTotal').textContent = eur(total);
+    return total;
+  }
+  document.getElementById('addItemBtn').addEventListener('click', ()=>newItemRow());
+
+  function nextInvoiceNumber(issueDateIso){
+    const year = (issueDateIso||todayISO()).slice(0,4);
+    const c = data.company;
+    const used = (c.counters[year]||0) + 1;
+    return { seq: used, year, display: `${used}/${c.prostor||'1'}/${c.uredjaj||'1'}` };
+  }
+  function renderInvoiceNumberPreview(){
+    const issueDate = document.getElementById('issueDate').value || todayISO();
+    const preview = nextInvoiceNumber(issueDate);
+    document.getElementById('invoiceNumberTag').textContent = preview.display + " (" + preview.year + ".)";
+  }
+
+  function resetInvoiceForm(){
+    currentItems = [];
+    document.getElementById('clientPicker').value = "";
+    document.getElementById('issueDate').value = todayISO();
+    document.getElementById('serviceDate').value = todayISO();
+    document.getElementById('dueDate').value = addDays(todayISO(), data.company.dueDays||15);
+    document.getElementById('paymentMethod').value = "Transakcijski račun";
+    document.getElementById('issuePlace').value = data.company.city ? data.company.city.replace(/^\d+\s*/,'') : "";
+    document.getElementById('invoiceNote').value = "";
+    newItemRow();
+    updateInvoiceTotal();
+    renderInvoiceNumberPreview();
+    toggleB2cWarning();
+  }
+  document.getElementById('resetFormBtn').addEventListener('click', resetInvoiceForm);
+  document.getElementById('issueDate').addEventListener('change', ()=>{
+    renderInvoiceNumberPreview();
+    if(!document.getElementById('dueDate').dataset.touched){
+      document.getElementById('dueDate').value = addDays(document.getElementById('issueDate').value, data.company.dueDays||15);
+    }
+  });
+  document.getElementById('dueDate').addEventListener('input', (e)=>{ e.target.dataset.touched = "1"; });
+
+  function collectInvoicePayload(){
+    const clientId = document.getElementById('clientPicker').value;
+    const client = data.clients.find(c=>c.id===clientId);
+    const clientSnapshot = client ? {...client} : {
+      type:'b2c', name:'Jednokratni kupac', oib:'', address:'', city:'', email:''
+    };
+    const total = updateInvoiceTotal();
+    if(currentItems.length===0 || currentItems.every(it=>!it.name.trim())){
+      return null;
+    }
+    return {
+      client: clientSnapshot,
+      issueDate: document.getElementById('issueDate').value || todayISO(),
+      serviceDate: document.getElementById('serviceDate').value || todayISO(),
+      dueDate: document.getElementById('dueDate').value || todayISO(),
+      paymentMethod: document.getElementById('paymentMethod').value,
+      issuePlace: document.getElementById('issuePlace').value.trim(),
+      items: currentItems.map(({id,...rest})=>rest),
+      note: document.getElementById('invoiceNote').value.trim(),
+      total
+    };
+  }
+
+  async function saveInvoice(){
+    const payload = collectInvoicePayload();
+    if(!payload){ toast("Dodaj barem jednu stavku s nazivom."); return null; }
+    const num = nextInvoiceNumber(payload.issueDate);
+    data.company.counters[num.year] = num.seq;
+    const invoice = Object.assign({
+      id: uid(),
+      number: num.display,
+      year: num.year,
+      paid: false,
+      createdAt: new Date().toISOString()
+    }, payload);
+    data.invoices.push(invoice);
+    await saveData();
+    return invoice;
+  }
+
+  document.getElementById('saveInvoiceBtn').addEventListener('click', async ()=>{
+    const inv = await saveInvoice();
+    if(inv){ toast(`Račun ${inv.number} spremljen.`); resetInvoiceForm(); switchView('racuni'); document.querySelector('[data-view="racuni"]').click(); }
+  });
+  document.getElementById('saveAndPrintBtn').addEventListener('click', async ()=>{
+    const inv = await saveInvoice();
+    if(inv){ printInvoice(inv); resetInvoiceForm(); }
+  });
+
+  // ---------- INVOICES LIST ----------
+  function renderInvoicesList(){
+    const body = document.getElementById('invoicesBody');
+    const empty = document.getElementById('invoicesEmpty');
+    const q = (document.getElementById('invoiceSearch').value||"").toLowerCase();
+    const list = data.invoices.slice().reverse().filter(inv=>
+      !q || inv.client.name.toLowerCase().includes(q) || inv.number.toLowerCase().includes(q)
+    );
+    body.innerHTML = "";
+    if(data.invoices.length===0){ empty.style.display='block'; }
+    else { empty.style.display='none'; }
+
+    const paidCount = data.invoices.filter(i=>i.paid).length;
+    const totalSum = data.invoices.reduce((s,i)=>s+i.total,0);
+    document.getElementById('invoiceStats').textContent =
+      `${data.invoices.length} računa · ${paidCount} plaćeno · ukupno ${eur(totalSum)}`;
+
+    list.forEach(inv=>{
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="num">${inv.number}</td>
+        <td>${escapeHtml(inv.client.name)}</td>
+        <td>${fmtDate(inv.issueDate)}</td>
+        <td><span class="tag ${inv.client.type==='b2c'?'tag-b2c':'tag-b2b'}">${inv.client.type==='b2c'?'B2C':'B2B'}</span></td>
+        <td class="num">${eur(inv.total)}</td>
+        <td><span class="tag ${inv.paid?'tag-paid':'tag-unpaid'}">${inv.paid?'Plaćeno':'Neplaćeno'}</span></td>
+        <td class="row-actions">
+          <button class="btn btn-ghost btn-sm" data-print="${inv.id}">Ispis/PDF</button>
+          <button class="btn btn-ghost btn-sm" data-paid="${inv.id}">${inv.paid?'Označi neplaćeno':'Označi plaćeno'}</button>
+          <button class="btn btn-danger btn-sm" data-del="${inv.id}">Obriši</button>
+        </td>`;
+      body.appendChild(tr);
+    });
+    body.querySelectorAll('[data-print]').forEach(b=>b.addEventListener('click', ()=>{
+      const inv = data.invoices.find(i=>i.id===b.dataset.print);
+      printInvoice(inv);
+    }));
+    body.querySelectorAll('[data-paid]').forEach(b=>b.addEventListener('click', async ()=>{
+      const inv = data.invoices.find(i=>i.id===b.dataset.paid);
+      inv.paid = !inv.paid;
+      await saveData();
+      renderInvoicesList();
+    }));
+    body.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click', async ()=>{
+      if(confirm("Trajno obrisati ovaj račun iz evidencije?")){
+        data.invoices = data.invoices.filter(i=>i.id!==b.dataset.del);
+        await saveData();
+        renderInvoicesList();
+      }
+    }));
+  }
+  document.getElementById('invoiceSearch').addEventListener('input', renderInvoicesList);
+
+  // ---------- PRINT / PREVIEW ----------
+  function buildInvoiceSheetHTML(inv){
+    const c = data.company;
+    const cl = inv.client;
+    const itemsRows = inv.items.map(it=>`
+      <tr>
+        <td>${escapeHtml(it.name)}</td>
+        <td class="r">${it.qty}</td>
+        <td class="r">${escapeHtml(it.unit||'')}</td>
+        <td class="r">${eur(it.price)}</td>
+        <td class="r">${eur(it.qty*it.price)}</td>
+      </tr>`).join('');
+    return `
+      <div class="print-head">
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          ${c.logo ? `<img src="${c.logo}" alt="logo" style="max-width:64px;max-height:64px;object-fit:contain;">` : ''}
+          <div>
+            <div class="print-brand">${escapeHtml(c.name||'Obrt')}</div>
+            <div style="font-size:12.5px;color:#3E5063;margin-top:4px;line-height:1.6;">
+              ${escapeHtml(c.owner||'')}<br>
+              ${escapeHtml(c.address||'')}${c.city? ', '+escapeHtml(c.city):''}<br>
+              OIB: ${escapeHtml(c.oib||'')}${c.mbo? ' · MBO: '+escapeHtml(c.mbo):''}
+            </div>
+          </div>
+        </div>
+        <div class="print-num">RAČUN BR.<br>${inv.number}</div>
+      </div>
+
+      <div class="print-cols">
+        <div class="col">
+          <h4>Kupac</h4>
+          <p><strong>${escapeHtml(cl.name||'—')}</strong><br>
+          ${escapeHtml(cl.address||'')}${cl.city? ', '+escapeHtml(cl.city):''}<br>
+          ${cl.oib? 'OIB: '+escapeHtml(cl.oib):''}</p>
+        </div>
+        <div class="col">
+          <h4>Podaci o plaćanju</h4>
+          <p>IBAN: ${escapeHtml(c.iban||'—')}<br>
+          ${c.bank? 'Banka: '+escapeHtml(c.bank)+'<br>':''}
+          Način plaćanja: ${escapeHtml(inv.paymentMethod)}</p>
+        </div>
+      </div>
+
+      <div class="print-meta">
+        <div>Mjesto izdavanja: <strong>${escapeHtml(inv.issuePlace||'—')}</strong></div>
+        <div>Datum izdavanja: <strong>${fmtDate(inv.issueDate)}</strong></div>
+        <div>Datum isporuke: <strong>${fmtDate(inv.serviceDate)}</strong></div>
+        <div>Dospijeće: <strong>${fmtDate(inv.dueDate)}</strong></div>
+      </div>
+
+      <table class="print-items">
+        <thead><tr><th>Naziv</th><th class="r">Kol.</th><th class="r">J.mj.</th><th class="r">Cijena</th><th class="r">Ukupno</th></tr></thead>
+        <tbody>${itemsRows || '<tr><td colspan="5" style="color:#8896A3;">Još nema stavki</td></tr>'}</tbody>
+      </table>
+      <div class="print-total">
+        <span style="align-self:center;font-size:13px;color:#3E5063;">Ukupno za platiti</span>
+        <span class="amount">${eur(inv.total)}</span>
+      </div>
+
+      ${inv.note ? `<div class="print-note"><strong>Napomena:</strong> ${escapeHtml(inv.note)}</div>` : ''}
+      <div class="print-note">${escapeHtml(c.pdvNote||'')}</div>
+
+      <div class="print-foot">
+        <span>${escapeHtml(c.email||'')}${c.phone? ' · '+escapeHtml(c.phone):''}</span>
+        <span>Račun je izrađen u elektroničkom obliku i vrijedi bez potpisa i pečata.</span>
+      </div>
+    `;
+  }
+
+  function printInvoice(inv){
+    document.getElementById('printSheet').innerHTML = buildInvoiceSheetHTML(inv);
+    setTimeout(()=>window.print(), 60);
+  }
+
+  function currentFormAsPreviewInvoice(){
+    // Build an invoice-shaped object from the current form WITHOUT touching saved counters
+    const clientId = document.getElementById('clientPicker').value;
+    const client = data.clients.find(c=>c.id===clientId);
+    const clientSnapshot = client ? {...client} : {
+      type:'b2c', name: document.getElementById('clientPicker').selectedOptions[0]?.textContent.trim() || 'Jednokratni kupac',
+      oib:'', address:'', city:'', email:''
+    };
+    const issueDate = document.getElementById('issueDate').value || todayISO();
+    const preview = nextInvoiceNumber(issueDate);
+    const total = updateInvoiceTotal();
+    return {
+      number: preview.display + " (nacrt)",
+      client: clientSnapshot,
+      issueDate,
+      serviceDate: document.getElementById('serviceDate').value || todayISO(),
+      dueDate: document.getElementById('dueDate').value || todayISO(),
+      paymentMethod: document.getElementById('paymentMethod').value,
+      issuePlace: document.getElementById('issuePlace').value.trim(),
+      items: currentItems.map(({id,...rest})=>rest),
+      note: document.getElementById('invoiceNote').value.trim(),
+      total
+    };
+  }
+
+  function openPreview(){
+    const inv = currentFormAsPreviewInvoice();
+    document.getElementById('previewSheet').innerHTML = buildInvoiceSheetHTML(inv);
+    document.getElementById('previewModal').classList.add('active');
+  }
+  function closePreview(){ document.getElementById('previewModal').classList.remove('active'); }
+  document.getElementById('previewBtn').addEventListener('click', openPreview);
+  document.getElementById('previewCloseBtn').addEventListener('click', closePreview);
+  document.getElementById('previewModal').addEventListener('click', (e)=>{
+    if(e.target.id==='previewModal') closePreview();
+  });
+  document.getElementById('previewPrintBtn').addEventListener('click', async ()=>{
+    closePreview();
+    const inv = await saveInvoice();
+    if(inv){ printInvoice(inv); resetInvoiceForm(); }
+  });
+
+  // ---------- BACKUP ----------
+  async function exportBackup(){
+    const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `racuni-backup-${todayISO()}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+  document.getElementById('exportBtn').addEventListener('click', exportBackup);
+  document.getElementById('exportBtn2').addEventListener('click', exportBackup);
+  document.getElementById('importBtn').addEventListener('click', ()=>document.getElementById('importFile').click());
+  document.getElementById('importFile').addEventListener('change', async (e)=>{
+    const file = e.target.files[0];
+    if(!file) return;
+    try{
+      const text = await file.text();
+      const parsed = JSON.parse(text);
+      if(!confirm("Ovo će zamijeniti trenutne podatke u aplikaciji uvezenom kopijom. Nastaviti?")) return;
+      data = parsed;
+      await saveData();
+      renderSettings();
+      renderClientsList();
+      renderClientPicker();
+      renderInvoicesList();
+      toast("Podaci uvezeni.");
+    }catch(err){
+      toast("Datoteka nije valjana.");
+    }
+    e.target.value = "";
+  });
+
+  // ---------- UTIL ----------
+  function escapeHtml(str){
+    return String(str||"").replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  }
+  function escapeAttr(str){ return escapeHtml(str); }
+
+  // ---------- INIT ----------
+  async function init(){
+    if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost')){
+      navigator.serviceWorker.register('sw.js').catch(()=>{});
+    }
+    await loadData();
+    const noteText = useClaudeStorage
+      ? "Podaci se čuvaju u tvom Claude računu."
+      : "Podaci se čuvaju na ovom uređaju/pregledniku.";
+    document.getElementById('storageNote').innerHTML =
+      `${noteText}<br><button id="exportBtn">Preuzmi sigurnosnu kopiju</button>`;
+    document.getElementById('exportBtn').addEventListener('click', exportBackup);
+    renderSettings();
+    renderClientsList();
+    renderClientPicker();
+    resetInvoiceForm();
+    renderInvoicesList();
+  }
+  init();
+
+})();
+</script>
+</body>
+</html>
