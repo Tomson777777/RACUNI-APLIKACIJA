@@ -14,6 +14,7 @@
 <meta name="apple-mobile-web-app-title" content="Računi">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bwip-js/4.7.0/bwip-js-min.js"></script>
 <style>
   :root{
     --ink:#1C2B39;
@@ -354,7 +355,7 @@
         <div class="grid grid-3">
           <div class="field">
             <label>Broj računa</label>
-            <div id="invoiceNumberTag" class="invoice-number-tag">—</div>
+            <input type="text" id="invoiceNumberInput" class="num" style="font-family:'IBM Plex Mono',monospace;">
           </div>
           <div class="field">
             <label>Datum izdavanja</label>
@@ -504,6 +505,14 @@
       </div>
 
       <div class="card">
+        <h3>Barkod za plaćanje (HUB3)</h3>
+        <p style="font-size:12px;color:var(--ink-soft);margin-top:0;">Na svaki račun automatski se dodaje 2D barkod koji ljudi mogu skenirati u aplikaciji svoje banke za brzo plaćanje (koristi IBAN i podatke o obrtu unesene gore).</p>
+        <div class="grid grid-3">
+          <div class="field"><label>Šifra namjene</label><input type="text" id="s_purpose" maxlength="4" placeholder="npr. COST"></div>
+        </div>
+      </div>
+
+      <div class="card">
         <h3>Napomena o PDV-u (ispisuje se na računu)</h3>
         <textarea id="s_pdvNote"></textarea>
       </div>
@@ -586,7 +595,7 @@
     company: {
       name:"", owner:"", address:"", city:"", oib:"", mbo:"",
       iban:"", bank:"", email:"", phone:"", logo:"",
-      prostor:"1", uredjaj:"1", dueDays:15,
+      prostor:"1", uredjaj:"1", dueDays:15, purposeCode:"COST",
       pdvNote:"PDV nije obračunan sukladno čl. 90. st. 2. Zakona o PDV-u (nismo u sustavu PDV-a).",
       counters:{}
     },
@@ -680,6 +689,7 @@
     document.getElementById('s_prostor').value = c.prostor;
     document.getElementById('s_uredjaj').value = c.uredjaj;
     document.getElementById('s_dueDays').value = c.dueDays;
+    document.getElementById('s_purpose').value = c.purposeCode || 'COST';
     document.getElementById('s_pdvNote').value = c.pdvNote;
     renderLogoPreview();
   }
@@ -736,6 +746,7 @@
     c.prostor = document.getElementById('s_prostor').value.trim() || "1";
     c.uredjaj = document.getElementById('s_uredjaj').value.trim() || "1";
     c.dueDays = Number(document.getElementById('s_dueDays').value)||15;
+    c.purposeCode = document.getElementById('s_purpose').value.trim().toUpperCase() || 'COST';
     c.pdvNote = document.getElementById('s_pdvNote').value;
     await saveData();
     toast("Postavke spremljene.");
@@ -890,11 +901,14 @@
     const used = (c.counters[year]||0) + 1;
     return { seq: used, year, display: `${used}/${c.prostor||'1'}/${c.uredjaj||'1'}` };
   }
-  function renderInvoiceNumberPreview(){
+  function renderInvoiceNumberPreview(force){
+    const input = document.getElementById('invoiceNumberInput');
+    if(input.dataset.touched && !force) return;
     const issueDate = document.getElementById('issueDate').value || todayISO();
     const preview = nextInvoiceNumber(issueDate);
-    document.getElementById('invoiceNumberTag').textContent = preview.display + " (" + preview.year + ".)";
+    input.value = preview.display;
   }
+  document.getElementById('invoiceNumberInput').addEventListener('input', (e)=>{ e.target.dataset.touched = "1"; });
 
   function resetInvoiceForm(){
     currentItems = [];
@@ -902,12 +916,14 @@
     document.getElementById('issueDate').value = todayISO();
     document.getElementById('serviceDate').value = todayISO();
     document.getElementById('dueDate').value = addDays(todayISO(), data.company.dueDays||15);
+    delete document.getElementById('dueDate').dataset.touched;
     document.getElementById('paymentMethod').value = "Transakcijski račun";
     document.getElementById('issuePlace').value = data.company.city ? data.company.city.replace(/^\d+\s*/,'') : "";
     document.getElementById('invoiceNote').value = "";
+    delete document.getElementById('invoiceNumberInput').dataset.touched;
     newItemRow();
     updateInvoiceTotal();
-    renderInvoiceNumberPreview();
+    renderInvoiceNumberPreview(true);
     toggleB2cWarning();
   }
   document.getElementById('resetFormBtn').addEventListener('click', resetInvoiceForm);
@@ -945,12 +961,34 @@
   async function saveInvoice(){
     const payload = collectInvoicePayload();
     if(!payload){ toast("Dodaj barem jednu stavku s nazivom."); return null; }
-    const num = nextInvoiceNumber(payload.issueDate);
-    data.company.counters[num.year] = num.seq;
+
+    const manualInput = document.getElementById('invoiceNumberInput');
+    const manual = manualInput.value.trim();
+    let numberDisplay, year;
+
+    if(manual && manualInput.dataset.touched){
+      // User chose their own number — use it as-is, and try to nudge the
+      // auto-counter forward so future automatic numbers keep climbing.
+      numberDisplay = manual;
+      year = payload.issueDate.slice(0,4);
+      const m = manual.match(/^(\d+)/);
+      if(m){
+        const n = parseInt(m[1],10);
+        if(!isNaN(n)){
+          data.company.counters[year] = Math.max(data.company.counters[year]||0, n);
+        }
+      }
+    } else {
+      const auto = nextInvoiceNumber(payload.issueDate);
+      numberDisplay = auto.display;
+      year = auto.year;
+      data.company.counters[year] = auto.seq;
+    }
+
     const invoice = Object.assign({
       id: uid(),
-      number: num.display,
-      year: num.year,
+      number: numberDisplay,
+      year,
       paid: false,
       createdAt: new Date().toISOString()
     }, payload);
@@ -1021,6 +1059,54 @@
   }
   document.getElementById('invoiceSearch').addEventListener('input', renderInvoicesList);
 
+  // ---------- HUB3 PAYMENT BARCODE ----------
+  const DIACRITIC_MAP = {'č':'c','Č':'C','ć':'c','Ć':'C','š':'s','Š':'S','ž':'z','Ž':'Z','đ':'dj','Đ':'Dj'};
+  function stripDiacritics(str){
+    return String(str||"").replace(/[čćšžđČĆŠŽĐ]/g, ch=>DIACRITIC_MAP[ch]||ch);
+  }
+  function buildHub3Text(inv){
+    const c = data.company;
+    const cl = inv.client;
+    const amountCents = Math.max(0, Math.round((Number(inv.total)||0)*100));
+    const amountStr = String(amountCents).padStart(15,'0');
+    const clip = (s,n)=> stripDiacritics(s||'').slice(0,n);
+    const lines = [
+      'HRVHUB30',
+      'EUR',
+      amountStr,
+      clip(cl.name,25),
+      clip(cl.address,25),
+      clip(cl.city,27),
+      clip(c.name,25),
+      clip(c.address,25),
+      clip(c.city,27),
+      clip((c.iban||'').replace(/\s+/g,''),21),
+      '',
+      '',
+      clip(c.purposeCode||'COST',4),
+      clip('Racun '+stripDiacritics(inv.number),35)
+    ];
+    return lines.join('\n');
+  }
+  function renderHub3BarcodeDataUrl(inv){
+    try{
+      if(typeof bwipjs === 'undefined') return '';
+      if(!data.company.iban) return '';
+      const canvas = document.createElement('canvas');
+      bwipjs.toCanvas(canvas, {
+        bcid: 'pdf417',
+        text: buildHub3Text(inv),
+        scale: 3,
+        columns: 6,
+        eclevel: 4
+      });
+      return canvas.toDataURL('image/png');
+    }catch(e){
+      console.error('HUB3 barcode greška', e);
+      return '';
+    }
+  }
+
   // ---------- PRINT / PREVIEW ----------
   function buildInvoiceSheetHTML(inv){
     const c = data.company;
@@ -1083,6 +1169,12 @@
       ${inv.note ? `<div class="print-note"><strong>Napomena:</strong> ${escapeHtml(inv.note)}</div>` : ''}
       <div class="print-note">${escapeHtml(c.pdvNote||'')}</div>
 
+      ${(()=>{ const bc = renderHub3BarcodeDataUrl(inv); return bc ? `
+      <div style="margin-top:22px;text-align:center;">
+        <img src="${bc}" style="max-width:260px;width:100%;height:auto;">
+        <div style="font-size:10.5px;color:#6B7B8A;margin-top:4px;">Skenirajte barkod u aplikaciji svoje banke za brzo plaćanje</div>
+      </div>` : ''; })()}
+
       <div class="print-foot">
         <span>${escapeHtml(c.email||'')}${c.phone? ' · '+escapeHtml(c.phone):''}</span>
         <span>Račun je izrađen u elektroničkom obliku i vrijedi bez potpisa i pečata.</span>
@@ -1104,10 +1196,11 @@
       oib:'', address:'', city:'', email:''
     };
     const issueDate = document.getElementById('issueDate').value || todayISO();
-    const preview = nextInvoiceNumber(issueDate);
+    const numberInput = document.getElementById('invoiceNumberInput');
+    const number = numberInput.value.trim() || nextInvoiceNumber(issueDate).display;
     const total = updateInvoiceTotal();
     return {
-      number: preview.display + " (nacrt)",
+      number,
       client: clientSnapshot,
       issueDate,
       serviceDate: document.getElementById('serviceDate').value || todayISO(),
@@ -1178,9 +1271,6 @@
 
   // ---------- INIT ----------
   async function init(){
-    if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost')){
-      navigator.serviceWorker.register('sw.js').catch(()=>{});
-    }
     await loadData();
     const noteText = useClaudeStorage
       ? "Podaci se čuvaju u tvom Claude računu."
