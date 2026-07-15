@@ -1,4 +1,4 @@
-const CACHE = 'racuni-cache-v2';
+const CACHE = 'racuni-cache-v10';
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
